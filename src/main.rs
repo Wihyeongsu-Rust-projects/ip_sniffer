@@ -20,6 +20,7 @@ impl Arguments {
             return Err("too many arguments");
         }
         let flag = args[1].clone();
+        // no flag
         if let Ok(ipaddr) = IpAddr::from_str(&flag) {
             return Ok(Arguments {
                 flag: "".to_owned(),
@@ -27,15 +28,20 @@ impl Arguments {
                 threads: 4,
             });
         } else {
+            // flag: -h, -help
             if flag.contains("-h") || flag.contains("-help") && args.len() == 2 {
                 println!(
                     "Usage: -j to select how many threads you want
                     \r\n -h or -help to show this help message"
                 );
                 return Err("help");
-            } else if flag.contains("-h") || flag.contains("-help") {
+            }
+            // undefined
+            else if flag.contains("-h") || flag.contains("-help") {
                 return Err("too many arguments");
-            } else if flag.contains("-j") {
+            }
+            // flag: -j
+            else if flag.contains("-j") {
                 let ipaddr = match IpAddr::from_str(&args[3]) {
                     Ok(s) => s,
                     Err(_) => return Err("not a valid IPADDR; must be IPv4 or IPv6"),
