@@ -1,7 +1,7 @@
 # Port_sniffer
 
 ## Description
-This is a simple port sniffer that can be used to scan open ports on a target machine. It is written in Python and uses the socket library to create a connection to the target machine and scan for open ports. The script takes a target IP address as input and scans a range of ports to check for open connections. If an open port is found, the script will print out the port number and the service running on that port.
+This is a simple port sniffer that can be used to **scan open ports on a target ip**.
 
 ---
 
